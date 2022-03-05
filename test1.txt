@@ -1,4 +1,5 @@
 ## RULES FOR ISTS 2022 COMPETITION
+##Located at /etc/pf.conf
 #Allow anything in and out of Michael's box
 pass in quick from any to 10.***.1.6
 pass out quick from 10.***.1.6 to any 
@@ -107,3 +108,6 @@ pass out quick from 10.***.1.8 to any port = 7
 #Allow ICMP
 pass in quick from any to 10.***.1.9 port = 7
 pass out quick from 10.***.1.9 to any port = 7
+
+#Allow some traffic outbound
+pass out proto { tcp udp } to port { 22 53 80 123 443 }
