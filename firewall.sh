@@ -4,9 +4,9 @@ touch pf.conf
 #Skip loopback
 echo set skip on lo0 >> pf.conf
 
-#Allow anything in and out of Michael's box
-echo pass in quick proto { udp tcp } from any to 10.1.1.6  >> pf.conf
-echo pass out quick proto { udp tcp } from 10.1.1.6 to any  >> pf.conf
+#Allow these ports in and out of Michael's box
+echo pass in quick proto { udp tcp } from port { 5315 8003:8006 22000:25999 } to 10.1.1.6  >> pf.conf
+echo pass out quick proto { udp tcp } from 10.1.1.6 to port { 5315 8003:8006 22000:25999 }  >> pf.conf
 
 #Block all from out to in
 echo block in proto { udp tcp } from any to any  >> pf.conf
@@ -51,7 +51,8 @@ echo pass out quick proto { udp tcp } from 10.1.1.2 to any port { 445 } >> pf.co
 #10.X.1.3
 ####################################################
 
-#FIGURE IT out
+echo pass out quick proto { udp tcp } from 10.1.1.3 to any >> pf.conf
+echo pass in quick proto { udp tcp } from any to 10.1.1.3 >> pf.conf
 
 ####################################################
 #LauraSt
