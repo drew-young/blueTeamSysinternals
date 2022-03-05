@@ -7,7 +7,7 @@ echo Downloading sysinternals...
 echo.
 
 if %1==32 goto thirtytwo
-if%1==64 goto sixtyfour
+if %1==64 goto sixtyfour
 
 :sixtyfour
 echo Downloading Procmon (Process Monitor) 64-bit
